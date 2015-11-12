@@ -11,18 +11,18 @@
         
     
     <meta property="og:site_name" content="Monsanto Engineering Blog" />
-    <meta property="og:title" content="Cloud Different" />
-    <meta property="og:description" content="The cloud present new opportunities but also new challenges. Learn how to create successful solutions in the cloud using five architectural principles." />
-    <meta property="og:url" content="http://engineering.monsanto.com/2015/10/06/cloud-different/" />
+    <meta property="og:title" content="Anatomy of Analytics" />
+    <meta property="og:description" content="As use of Analytics is becoming more pervasive at Monsanto, this series of posts will discribe the supporting architecturet that is being used to instantiate a complete analytics platform" />
+    <meta property="og:url" content="http://engineering.monsanto.com/2015/11/03/analytics-part-I/" />
     <meta property="og:image" content="http://engineering.monsanto.com/img/mon-maui.jpg" />
-    <meta name="description" content="The cloud present new opportunities but also new challenges. Learn how to create successful solutions in the cloud using five architectural principles." />
+    <meta name="description" content="As use of Analytics is becoming more pervasive at Monsanto, this series of posts will discribe the supporting architecturet that is being used to instantiate a complete analytics platform" />
     
 
     <link rel="shortcut icon" href="/favicon.ico" />
 
-    <title>Cloud Different - Engineering at Monsanto</title>
+    <title>Anatomy of Analytics - Engineering at Monsanto</title>
 
-    <link rel="canonical" href="http://engineering.monsanto.com/2015/10/06/cloud-different/" />
+    <link rel="canonical" href="http://engineering.monsanto.com/2015/11/03/analytics-part-I/" />
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
@@ -99,11 +99,11 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="post-heading">
-                        <h1>Cloud Different</h1>
+                        <h1>Anatomy of Analytics</h1>
                         
-                        <h2 class="subheading">A new architecture for a new platform</h2>
+                        <h2 class="subheading">Part I</h2>
                         
-                        <span class="meta">Posted  by David Dooling on October 6, 2015</span>
+                        <span class="meta">Posted  by Naghman Waheed on November 3, 2015</span>
                     </div>
                 </div>
             </div>
@@ -117,115 +117,128 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 post-body">
 
-				<p>Over the past several years, cloud computing of all types has gained a
-lot of momentum. Because of the massive increase in mobile computing,
-i.e., phones and tablets, more and more people are consuming cloud
-services like GMail, DropBox, Instagram, and Office365. These Software
-as a Service (SaaS) solutions are convenient for people on the go
-because the information they need is always easily accessible through
-a web browser or mobile app. This is possible because the user&#39;s data
-and preferences are stored &quot;in the cloud&quot;, using servers and services
-managed by someone else, typically the operator of the SaaS
-solution. While these SaaS solutions are convenient for end users,
-they do not allow for much customization. To develop custom
-capabilities in the cloud, you must turn to Infrastructure as a
-Service (IaaS).</p>
+				<p>Years ago, when I made the switch from procedural to object oriented 
+programming, concepts such as function overloading fascinated me. 
+A single function changing and behaving based on the types of values 
+passed to it spoke volumes to its simplicity and elegance. Feeling 
+a bit nostalgic I am going to say “those were the good old days!&quot;. 
+Today, the word <strong><em>Analytics</em></strong> is certainly an overloaded term
+in the data world!  It is used to define work done by data scientists 
+to business analysts and from execution of sophisticated statistical 
+algorithms to the use of simple visualization tools. Oh, and let&#39;s 
+not forget its synonymous use with the term “Big Data”. I wish I
+could muster up the same sense of euphoria for the overloaded term 
+<strong><em>Analytics</em></strong> that I once felt for the use of overloaded function
+in a class definition. </p>
 
-<p>IaaS consists of virtualized compute, storage, and networking managed
-by someone else that you can consume, typically on a pay-per-use
-basis. The automation enabled by consuming infrastructure via services
-allows you to spin up an entire data-center-like environment in less
-than ten minutes! Many IaaS providers like Amazon Web Services,
-Microsoft Azure, and Google Cloud Platform provide additional
-capabilities like managed message queues, notifications, and even
-databases delivered as a service. Using these building blocks of IT,
-you can rapidly create solutions for your customers without purchasing
-a single piece of hardware.</p>
+<p>In this multi-part series of posts I will share practical knowledge 
+about using data to gain insights that I have acquired during my 
+career as a data and information architect. In addition, I will 
+highlight the discipline that is required to create the supporting 
+architecture and challenges encountered along the way when instantiating 
+a comprehensive analytical platform. The first step on this journey is 
+simply defining the consumers of information and understanding what they 
+need. In short, the first commandment is simply - know thy information 
+consumer. Figure 1 captures the essence of this concept by defining four
+distinct types of consumers of data - information consumer, information 
+pro-consumer, data scientist and machine. </p>
 
-<p>So what&#39;s the catch? While self-service infrastructure and paying only
-for what you use sounds great, typically cloud infrastructure is less
-reliable and over time becomes more expensive than on-site
-resources. To reap the benefits of IaaS, you must think differently
-about your solution architecture. If you don&#39;t, you&#39;ll end up with a
-less reliable, more expensive solution.</p>
+<p><img src="/img/Information_Consumers.png" alt="Information Consumer Types">
+<center> Figure 1 - Information Consumer Types </center></p>
 
-<p><img src="/img/cloud-different.jpg" alt="Cloud Different"></p>
+<p>One thing to note in Figure 1 is that the word <strong><em>Analytics</em></strong> is sparingly 
+used. This was deliberate. All information presented has analytical 
+value. More on that in the next post. For now, let’s just say before 
+the word <strong><em>Analytics</em></strong> took on a life of its own, many of the terms above 
+sufficed to describe how different consumers analyzed data and information. 
+It was not long ago that the terms such as “slicing and dicing” and 
+“drill down analysis” were commonly used to describe capabilities which 
+allowed users to make important decisions. Today those capabilities are
+still an integral component of Business Intelligence and offered by 
+many vendors as a standard offering as part of their respective suite of 
+products. </p>
 
-<p>To avoid these pitfalls, when architecting solutions in the cloud, you
-must design with the following five principles in mind.</p>
+<p>A few observations on information consumers in each category:</p>
 
-<ol>
-<li> <strong>Automation</strong>: You must automate every aspect of your
-infrastructure and solution, ensuring your solution can be spun up
-reliably, rapidly, and repeatably.</li>
-<li> <strong>Fault Tolerant</strong>: Since cloud infrastructure is less reliable,
-you must create solutions that are fault tolerant, responding to
-and recovering from failures automatically.</li>
-<li> <strong>Horizontally Scalable</strong>: Your solution must be horizontally
-scalable so it can scale up to meet demand and scale back down to
-control costs.</li>
-<li> <strong>Secure</strong>: You must secure every aspect of your solution
-environment. Security is your job, not someone else&#39;s!</li>
-<li> <strong>Cost Effective</strong>: You have to use commodity, cost-effective
-components so that executing on the first four principles does not
-break the bank.</li>
-</ol>
+<p><strong><em>Information Consumers</em></strong> are generally the business users and executives 
+that want access to timely and accurate reports and dashboards through 
+intuitive and user friendly interfaces. The information consumed by 
+this group of consumers needs to be highly accurate, trusted and 
+reproducible.  Additional characteristics of information consumed by 
+this set of users could be simple aggregated views of past sales or 
+financial data for a specific region, as an example, or a view of 
+forecasted sales numbers generated thru some sophisticated prediction 
+algorithm.</p>
 
-<p>Done properly, cloud solutions can be more reliable and less costly.</p>
+<p><strong><em>Information Pro-Consumers</em></strong> are commonly known by more familiar terms 
+such as business analysts and power users. This group is concerned with
+performing analysis on data and generally their focus is to understand 
+the past in order to predict the future. In addition to accuracy and 
+timeliness this group often demands low latency and high accessibility
+to data. More over, this group prefers to have multiple tools at their 
+disposal to be able to perform aggregations, calculations, slicing and 
+dicing as well as adhoc analysis on data. </p>
 
-<p>Just as how you architect solutions in the cloud must change,
-continuing to use the technology and processes that have been
-optimized for internal operations is not going to lead to success in
-the cloud.  At Monsanto, when we asked ourselves how we could be
-successful in the cloud, we knew our people would have to adopt new
-technologies and develop more agile processes. We would have to
-transition from different teams managing different part of a custom
-applications life cycle, i.e., one team for development, another for
-testing, another for operation, and yet another for support, we should
-have teams operating in a DevOps model, owning a capability from
-cradle to grave and providing it as a service to their customers.</p>
+<p><strong><em>Data Scientists</em></strong> do not need any introduction. Lately, much has been 
+said and written about this set of users. A quick search on the web will 
+prove that. But this series is not about defining who they are. Instead 
+it is about what they would like to do with data. Regardless of whether 
+these users are statisticians with computer science degrees or computational 
+experts in some specific field, their needs revolve around having access 
+to any and every piece of data - big or small, structured or unstructured. 
+Often the discovery process and experimentation undertaken by this group 
+may include diverse techniques ranging from simple data mining to
+applying various statistical algorithms to testing some hypothesis. 
+In the end applying sophisticated statistical techniques and/or machine 
+learning algorithms to create insights is the primary motivation behind 
+the work of this user community. A few posts from one of my colleague are
+an interesting read on this particular data consumer type.<br/>
+  <a href="http://engineering.monsanto.com/2015/11/09/what-makes-a-data-scientist-part-1/">What makes a data scientist – Part 1</a><br/>
+  <a href="http://engineering.monsanto.com/2015/11/11/what-makes-a-data-scientist-part-2/">What makes a data scientist – Part 2</a></p>
 
-<p>The cloud presents an amazing opportunity to increase the speed with
-which companies can deliver capabilities to their customers. To
-capitalize on the opportunity, you must embrace the cloud&#39;s
-differences and use them to your advantage.  The architectural
-principles outlined above coupled with more agile process and a
-holistic DevOps model allow teams to create solutions that are more
-secure, more reliable, more performant, and more cost effective than
-on-premises solutions.  In addition, your teams will be able to
-deliver solutions that delight your users much more quickly than
-before.</p>
+<p><strong><em>Machines</em></strong> operate on data and need data to operate. Despite this fact, in 
+the data world, the needs of this voiceless group is often overlooked. 
+With increased mechanization and automation, system-to-system communication 
+is only increasing in importance and scale. Whether it is data collected 
+through sensors and passed on to other systems for processing or data made 
+available via APIs for general consumption by external users or partners, 
+the fact remains that most companies are still trying to shore up their 
+ability to service this important category of consumers. </p>
 
-<p>To learn more about how to architect &quot;cloud first&quot; solutions, learn
-about our journey to the cloud, and see how we use some of the tools
-and libraries we have open sourced, be sure to attend our talk at AWS
-re:Invent,
-<a href="https://www.portal.reinvent.awsevents.com/connect/sessionDetail.ww?SESSION_ID=2547" title="AWS re:Invent Cloud First talk">Cloud First: New Architecture for New Infrastructure</a>, this
-Thursday 8 October 2015 at 2:45 p.m. PT in Palazzo N.</p>
+<p>In conclusion, the message is simple. It is critical to understand the need 
+of those you serve. Such basic yet crucial piece of information should be a 
+precursor to everything else that follows. Whether it is creating a reference 
+architecture and/or standing up a scalable analytical platform one thing is 
+immediately apparent from figure 1.; the platform will need to cover use cases 
+ranging from machine learning to ad-hoc analysis, data analysis to sophisticated 
+analytics and from simple information consumption thru APIs to machine to 
+machine communication. A key mandate for a successful analytical platform is
+to make sure that the need of each consumer type is addressed holistically 
+in helping them turn data into useful information and insights. </p>
 
 
                 
 
                         <div class="post-signature multiple">
-                            posted on October 6, 2015 by <br>
+                            posted on November 3, 2015 by <br>
                         
 
 
                             <div class="author">
                                 
-                                <img src="https://avatars1.githubusercontent.com/u/57881?v=3&s=40">
+                                <img src="https://avatars1.githubusercontent.com/u/12257134?v=3&s=40">
                                 
                                     <span>
-                                        David Dooling
+                                        Naghman Waheed
                                     </span>
 
                                 
-                                <a  href="https://twitter.com/ddgenome">
+                                <a  href="https://twitter.com/nnwahe">
                                     <i class="fa fa-twitter fa-1x "></i>
                                 </a>
                                 
                                 
-                                <a  href="https://github.com/ddgenome">
+                                <a  href="https://github.com/nnwahe">
                                     <i class="fa fa-github fa-1x"></i>
                                 </a>
                                 
@@ -239,13 +252,9 @@ Thursday 8 October 2015 at 2:45 p.m. PT in Palazzo N.</p>
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2015/09/24/better-spray-metrics-with-kamon/" data-toggle="tooltip" data-placement="top" title="Better Spray metrics with Kamon">&larr; Previous Post</a>
+                        <a href="/2015/10/14/aws-reinvent/" data-toggle="tooltip" data-placement="top" title="AWS re:Invent 2015">&larr; Previous Post</a>
                     </li>
                     
-                    
-                    <li class="next">
-                        <a href="/2015/10/07/demystifying-iam-roles/" data-toggle="tooltip" data-placement="top" title="Demystifying IAM Roles">Next Post &rarr;</a>
-                    </li>
                     
                 </ul>
 
